@@ -5,6 +5,7 @@ $( document ).on('turbolinks:load', function() {
   showSliderValue("spirit");
   showSliderValue("charisma");
   validateCharacter();
+  initToast();
 })
 
 function validateCharacter(){
@@ -36,5 +37,12 @@ function showSliderValue(name){
   $("#character_" + name).on('input', function(){
     console.log($(this).val())
     $("#" + name + "-indicator").text($(this).val());
+  });
+}
+
+function initToast(){
+  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl).show();
   });
 }

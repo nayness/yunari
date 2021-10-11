@@ -10,7 +10,10 @@ import "channels"
 
 import 'bootstrap'
 import 'jquery-validation'
+import "@fortawesome/fontawesome-free/js/all";
 import 'packs/characters'
+
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 
 Rails.start()
 Turbolinks.start()
