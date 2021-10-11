@@ -5,7 +5,7 @@
       == form_for @character do |f|
         .mb-3
           == f.label :name, 'Nombre', class: "form-label"
-          == f.text_field :name, class: "form-control"
+          == f.text_field :name, class: "form-control", required: true
         .mb-3
           == f.label :special_skill, 'Habilidad Especial', class: "form-label"
           == f.select :special_skill, options_for_select(['Resistencia al fuego', 'Resistencia al frio', 'Resistencia al veneno', 'Resistencia a la oscuridad', 'Movimiento acelerado', 'Crecimiento acelerado', 'Invocación de familiar']), {}, class: "form-select"
