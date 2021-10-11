@@ -12,6 +12,7 @@ import 'bootstrap'
 import 'jquery-validation'
 import "@fortawesome/fontawesome-free/js/all";
 import 'packs/characters'
+import 'packs/login'
 
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 
