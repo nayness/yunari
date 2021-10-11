@@ -18,7 +18,7 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
     if @character.save
-      flash[:alert] = 'Creado existosamente'
+      flash[:success] = 'Creado existosamente'
       redirect_to character_path(@character)
     else
       flash[:danger] = 'Ups hubo un problema creando este personaje'

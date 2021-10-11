@@ -1,4 +1,8 @@
 nav.navbar.navbar-dark.bg-dark
   .container-fluid
     == link_to 'Yunari', root_path, class: 'navbar-brand'
-    == link_to 'Iniciar sesión', '#', class: 'btn btn-primary'
+    - if user_signed_in?
+      == link_to 'Cerrar sesión', destroy_user_session(current_user), class: 'btn btn-primary'
+    - else
+      == link_to 'Iniciar sesión', new_user_session_path, class: 'btn btn-primary'
+      == link_to 'Crear cuenta', new_user_registration_path, class: 'btn btn-outline-primary'
