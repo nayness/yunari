@@ -22,6 +22,7 @@ class CharactersController < ApplicationController
       redirect_to character_path(@character)
     else
       flash[:danger] = 'Ups hubo un problema creando este personaje'
+      puts @character.errors.full_messages
       render :new
     end
   end
@@ -39,6 +40,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :user_token)
+    params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :token)
   end
 end

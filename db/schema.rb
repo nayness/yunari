@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_204019) do
+ActiveRecord::Schema.define(version: 2021_10_11_021740) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name", null: false
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 2021_10_10_204019) do
     t.integer "charisma", default: 100
     t.integer "spirit", default: 100
     t.string "special_skill"
-    t.string "user_token", null: false
+    t.string "token", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_token"], name: "index_characters_on_user_token"
+    t.index ["token"], name: "index_characters_on_token"
   end
 
   create_table "kinds", force: :cascade do |t|
