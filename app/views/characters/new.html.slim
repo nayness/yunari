@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-4.offset-4.mt-5
+      h3 Crear personaje
+      == form_for @character do |f|
+        .mb-3
+          == f.label :name, 'Nombre', class: "form-label"
+          == f.text_field :name, class: "form-control", required: true
+        .mb-3
+          == f.label :special_skill, 'Habilidad Especial', class: "form-label"
+          == f.select :special_skill, options_for_select(['Resistencia al fuego', 'Resistencia al frio', 'Resistencia al veneno', 'Resistencia a la oscuridad', 'Movimiento acelerado', 'Crecimiento acelerado', 'Invocación de familiar']), {}, class: "form-select"
+        .mb-3
+          == f.label :power, 'Poder', class: "form-label"
+          span#power-indicator.float-end.text-secondary 100
+          == f.number_field :power, class: "form-range", type: "range", min: 100, max: 1000 
+        .mb-3
+          == f.label :attack, 'Ataque', class: "form-label"
+          span#attack-indicator.float-end.text-secondary 100
+          == f.number_field :attack, class: "form-range", type: "range", min: 100, max: 1000 
+        .mb-3
+          == f.label :strenght, 'Fuerza', class: "form-label"
+          span#strenght-indicator.float-end.text-secondary 100
+          == f.number_field :strenght, class: "form-range", type: "range", min: 100, max: 1000
+        .mb-3
+          == f.label :charisma, 'Carisma', class: "form-label"
+          span#charisma-indicator.float-end.text-secondary 100
+          == f.number_field :charisma, class: "form-range", type: "range", min: 100, max: 1000
+        .mb-3
+          == f.label :spirit, 'Espíritu', class: "form-label"
+          span#spirit-indicator.float-end.text-secondary 100
+          == f.number_field :spirit, class: "form-range", type: "range", min: 100, max: 1000
+        .mb-3
+          == f.submit 'Guardar', class: "btn btn-primary btn-block"
+      end
