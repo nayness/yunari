@@ -13,6 +13,7 @@ $( document ).on('turbolinks:load', function() {
   validateCharacter();
   initToast();
   copyToClipboard();
+  openModal();
 })
 
 // jQuery.validator.addMethod("maxPoints", function(value, element) {
@@ -157,5 +158,12 @@ function enableTooltips(){
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
+  });
+}
+
+function openModal(){
+  $("#delete_character_btn").on("click", function(){
+    var modal = new bootstrap.Modal(document.getElementById("delete_character_modal"));
+    modal.show();
   });
 }

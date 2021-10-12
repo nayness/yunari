@@ -1,2 +1,7 @@
-h1 Characters#edit
-p Find me in app/views/characters/edit.html.slim
+.row
+  .col-md-8.col-xs-8.offset-md-1.mt-3
+    h4 Editar personaje
+  .col-md-2.col-xs-4
+    == button_tag raw('<span><i class="fas fa-trash mx-2"></i>Eliminar</span>'), type: :button, class: "btn btn-danger text-white mt-3", id: "delete_character_btn"
+== render 'form', method: :put
+== render 'modal'

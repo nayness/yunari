@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_033114) do
+ActiveRecord::Schema.define(version: 2021_10_12_201241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_033114) do
     t.bigint "kind_id", null: false
     t.text "history"
     t.string "slug"
+    t.boolean "privacy", default: false
     t.index ["kind_id"], name: "index_characters_on_kind_id"
     t.index ["race_id"], name: "index_characters_on_race_id"
     t.index ["slug"], name: "index_characters_on_slug"

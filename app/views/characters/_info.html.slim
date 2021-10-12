@@ -2,6 +2,14 @@
   .row
     .col-md-4.offset-md-2.col-xs-12.mt-5
       .shadow.p-3.mb-5.bg-body.rounded
+        .float-end
+          - if @character.privacy?
+            i.fas.fa-lock.text-primary.mx-1
+            span.text-primary Privado
+          - else
+            i.fas.fa-globe-americas.text-primary.mx-1
+            span.text-primary Público
+          end
         h3== @character.name.capitalize
         == image_tag url_for(@character.image), class: "card-img-top rounded"
         .row.mb-3.mt-3

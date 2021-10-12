@@ -21,7 +21,7 @@ class Character < ApplicationRecord
 
   def slugify
     clean_name = standard_name
-    self.slug = I18n.transliterate(clean_name.gsub(/s/, '-'))
+    self.slug = I18n.transliterate(clean_name.gsub(/\s/, '-'))
   end
 
   def sanitize_name
@@ -29,7 +29,7 @@ class Character < ApplicationRecord
   end
 
   def standard_name
-    name.downcase.strip.gsub(/[^0-9A-Za-z]/, '')
+    name.downcase.strip.gsub(/[^0-9A-Za-z\s]/, '')
   end
 
   def total?

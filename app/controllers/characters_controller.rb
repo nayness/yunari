@@ -15,6 +15,9 @@ class CharactersController < ApplicationController
 
   def public_info
     @character = Character.find_by(slug: @slug)
+    if @character.nil? || @character&.privacy?
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    end
   end
 
   def search_slug
@@ -31,6 +34,7 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params)
+    @character.user = current_user if current_user.present?
     if @character.save
       flash[:success] = 'Creado existosamente'
       redirect_to character_path(@character)
@@ -43,20 +47,26 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @character = Character.new(character_params)
-    if @character.save
-      flash[:success] = 'Creado existosamente'
+    @updated = @character.update(character_params.except(:name))
+    if @updated
+      flash[:success] = 'Se ha actualizado exitosamente'
       redirect_to character_path(@character)
     else
       @remaining_points = @character.remaining_points
-      flash[:danger] = 'Ups hubo un problema creando este personaje'
+      flash[:danger] = 'Ups hubo un problema editando este personaje'
       puts @character.errors.full_messages
-      render :new
+      render :edit
     end
   end
 
   def destroy
-    @character.destroy
+    if @character.destroy
+      flash[:success] = 'Se ha eliminado exitosamente'
+      redirect_to characters_path
+    else
+      flash[:danger] = 'Ocurrió un problema eliminando este personaje'
+      redirect_to edit_character(@character)
+    end
   end
 
   private
@@ -64,7 +74,7 @@ class CharactersController < ApplicationController
   def set_slug
     @slug = params[:slug] || character_params[:slug]
     @slug = @slug.downcase.strip.gsub(/[^0-9A-Za-z-]/, '')
-    @slug = I18n.transliterate(@slug.gsub(/s/, '-'))
+    @slug = I18n.transliterate(@slug.gsub(/\s/, '-'))
   end
 
   def set_character
