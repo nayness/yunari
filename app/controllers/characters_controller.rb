@@ -40,6 +40,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :token)
+    params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :token, :image, :race_id, :kind_id)
   end
 end

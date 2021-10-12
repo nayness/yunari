@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do
+  Race.create(name: Faker::Games::WorldOfWarcraft.race)
+end
+10.times do
+  Kind.create(name: Faker::Games::WorldOfWarcraft.class_name)
+end

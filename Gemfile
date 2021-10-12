@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim-rails'
 gem 'devise'
 gem 'pg'
+gem 'faker'
+gem 'active_storage_validations'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

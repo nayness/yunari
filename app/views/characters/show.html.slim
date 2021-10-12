@@ -4,11 +4,15 @@
       .card
         .card-body
           h5.card-title== @character.name
+          == image_tag url_for(@character.image), class: "card-img-top"
           ul.list-group.list-group-flush
+            li.list-group-item=="Token: #{@character.token}"
             li.list-group-item=="Poder: #{@character.power}"
             li.list-group-item=="Ataque: #{@character.attack}"
             li.list-group-item=="Fuerza: #{@character.strenght}"
             li.list-group-item=="Carisma: #{@character.charisma}"
             li.list-group-item=="Espíritu: #{@character.spirit}"
             li.list-group-item=="Habilidad Especial: #{@character.special_skill}"
-            li.list-group-item=="Token: #{@character.token}"
+            li.list-group-item=="Raza: #{@character.race.name}"
+            li.list-group-item=="Tipo: #{@character.kind.name}"
+            

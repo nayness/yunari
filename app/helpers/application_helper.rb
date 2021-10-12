@@ -11,4 +11,8 @@ module ApplicationHelper
       'Mensaje'
     end
   end
+
+  def calculate_remaining_points(character)
+    2500 - (character.power + character.attack + character.spirit + character.charisma + character.strenght)
+  end
 end
