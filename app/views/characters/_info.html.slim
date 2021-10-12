@@ -3,7 +3,7 @@
     .col-md-4.offset-md-2.col-xs-12.mt-5
       .shadow.p-3.mb-5.bg-body.rounded
         h3== @character.name.capitalize
-        == image_tag url_for(@character.image), class: "card-img-top"
+        == image_tag url_for(@character.image), class: "card-img-top rounded"
         .row.mb-3.mt-3
           .col-sm-12
             .bg-light.p-3.border.rounded
@@ -24,19 +24,29 @@
 
     .col-md-4.col-xs-12.mt-5
       .shadow.p-3.mb-5.bg-body.rounded
-        p.fw-light Poder
+        span.fw-light Poder
+        i.fas.fa-fire.text-primary.mx-2
+        span.float-end.text-primary==@character.power
         .progress.mb-3
           .progress-bar aria-valuemax="1000" aria-valuemin="0" aria-valuenow="25" role="progressbar" style="width: #{percentage(@character.power)}%"
-        p.fw-light Ataque
+        span.fw-light Ataque
+        i.fas.fa-fan.text-primary.mx-2
+        span.float-end.text-primary==@character.attack
         .progress.mb-3
           .progress-bar aria-valuemax="1000" aria-valuemin="100" aria-valuenow="#{@character.attack}" role="progressbar" style="width: #{percentage(@character.attack)}%"
-        p.fw-light Fuerza
+        span.fw-light Fuerza
+        i.fas.fa-hand-holding-heart.text-primary.mx-2
+        span.float-end.text-primary==@character.strenght
         .progress.mb-3
           .progress-bar aria-valuemax="1000" aria-valuemin="100" aria-valuenow="#{@character.strenght}" role="progressbar" style="width: #{percentage(@character.strenght)}%"
-        p.fw-light Carisma
+        span.fw-light Carisma
+        i.fas.fa-smile-wink.text-primary.mx-2
+        span.float-end.text-primary==@character.charisma
         .progress.mb-3
           .progress-bar aria-valuemax="1000" aria-valuemin="100" aria-valuenow="#{@character.charisma}" role="progressbar" style="width: #{percentage(@character.charisma)}%"
-        p.fw-light Espíritu
+        span.fw-light Espíritu
+        i.fas.fa-praying-hands.text-primary.mx-2
+        span.float-end.text-primary==@character.spirit
         .progress.mb-3
           .progress-bar aria-valuemax="1000" aria-valuemin="100" aria-valuenow="#{@character.spirit}" role="progressbar" style="width: #{percentage(@character.spirit)}%"
             
