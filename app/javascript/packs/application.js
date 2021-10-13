@@ -15,7 +15,7 @@ import 'packs/general'
 import 'packs/characters'
 import 'packs/login'
 
-window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+window.bootstrap = require('bootstrap');
 
 Rails.start()
 Turbolinks.start()
