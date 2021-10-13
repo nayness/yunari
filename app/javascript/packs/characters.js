@@ -17,12 +17,12 @@ $( document ).on('turbolinks:load', function() {
 })
 
 // jQuery.validator.addMethod("maxPoints", function(value, element) {
-//   return this.optional(element) || (getRemaining() > 0);
+//   return this.optional(element) || (getTotal() === 2500);
 // }, "No puedes asignar más de 2000 pts");
 
 jQuery.validator.addMethod("minPoints", function(value, element) {
   return this.optional(element) || (getRemaining() === 0);
-}, "Tienes que asignar todos los puntos");
+}, "Tienes que asignar exactamente 2000 pts");
 
 jQuery.validator.addMethod("nameUniq", function(value, element) {
   return this.optional(element) || (searchName() === 0);
@@ -67,6 +67,16 @@ function validateCharacter(){
       'character[special_skill]': "required",
     },
     messages: {
+      'remaining_points': {
+        minPoints: function(){
+          var remaining = getRemaining();
+          var message = "Aún te quedan puntos por asignar";
+          if (remaining < 0 ){
+            message = "No puedes asignar más de 2000 puntos";
+          }
+          return message;
+        }
+      },
       'character[name]': {
         required: 'Debes asignarle un nombre a tu personaje'
       },
