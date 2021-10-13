@@ -14,8 +14,8 @@
           .row.mb-3.mt-3
             .col-sm-12
               .bg-light.p-3.border.rounded
-                == button_tag 'Copiar', class: "btn btn-outline-primary btn-sm float-end", data: { bs_toggle: "tooltip",  bs_placement:"top"}, title: "Copiar al portapapeles", id: "copy_link"
+                == button_tag 'Copiar', class: "btn btn-outline-primary btn-sm float-end copy_link", data: { bs_toggle: "tooltip",  bs_placement: "top", link: character.slug }, title: "Copiar al portapapeles"
                 == link_to personajes_path(character.slug), personajes_path(character.slug)
                 .d-none
-                  == text_field_tag :link, "localhost:3000#{personajes_path(character.slug)}"
+                  == text_field_tag :link, "localhost:3000#{personajes_path(character.slug)}", id: character.slug
     end

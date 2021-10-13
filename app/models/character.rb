@@ -6,6 +6,7 @@ class Character < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
   validates :token, presence: true, uniqueness: true
   validates :power, inclusion: { in: 100..1000 }
   validates :attack, inclusion: { in: 100..1000 }

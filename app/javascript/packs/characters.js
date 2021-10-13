@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-  enableTooltips();
+  validateCharacter();
   showSliderValue("power");
   showSliderValue("attack");
   showSliderValue("strenght");
@@ -10,15 +10,9 @@ $( document ).on('turbolinks:load', function() {
   setPoints("strenght");
   setPoints("spirit");
   setPoints("charisma");
-  validateCharacter();
-  initToast();
   copyToClipboard();
   openModal();
-})
-
-// jQuery.validator.addMethod("maxPoints", function(value, element) {
-//   return this.optional(element) || (getTotal() === 2500);
-// }, "No puedes asignar más de 2000 pts");
+});
 
 jQuery.validator.addMethod("minPoints", function(value, element) {
   return this.optional(element) || (getRemaining() === 0);
@@ -143,8 +137,8 @@ function setTotal(){
 }
 
 function copyToClipboard() {
-  $("#copy_link").on('click', function(){
-    var copyText = document.getElementById("link")
+  $(".copy_link").on('click', function(){
+    var copyText = document.getElementById(this.dataset.link);
     var tooltip =  bootstrap.Tooltip.getInstance(this);
     var newTooltip = new bootstrap.Tooltip(this);
     tooltip.hide();
@@ -154,20 +148,6 @@ function copyToClipboard() {
     this.dataset.bsOriginalTitle = 'Copiado!';
     newTooltip.show();
     this.dataset.bsOriginalTitle = 'Copiar al portapapeles';
-  });
-}
-
-function initToast(){
-  var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-  var toastList = toastElList.map(function (toastEl) {
-    return new bootstrap.Toast(toastEl).show();
-  });
-}
-
-function enableTooltips(){
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
   });
 }
 
