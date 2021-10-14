@@ -1,0 +1,22 @@
+.row
+  .col-md-2.col-xs-4.mt-3
+    == render 'shared/sidebar'
+  .col-md-9.offset-md-1.col-xs-8.mt-5
+    == form_with model: @user, url: update_account_user_path, method: :put do |f|
+      .row
+        .col-md-4.col-xs-12
+          .mb-3
+            == f.label :name, 'Nombre', class: "form-label"
+            == f.text_field :name, class: "form-control"
+          .mb-3
+            == f.label :email, 'Correo', class: "form-label"
+            == f.text_field :email, class: "form-control", disabled: true
+          .mb-3
+            == f.label :lastname, 'Apellido', class: "form-label"
+            == f.text_field :lastname, class: "form-control"
+          .mb-3
+            == f.label :alias, 'Apodo', class: "form-label"
+            == f.text_field :alias, class: "form-control"
+          .mb-3
+            == f.submit 'Actualizar', class: "btn btn-primary w-100"
+    end

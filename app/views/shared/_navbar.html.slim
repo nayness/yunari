@@ -13,11 +13,13 @@ nav.navbar.navbar-dark.bg-primary.text-white
             == current_user.email
           ul.dropdown-menu aria-labelledby="navDrop"
             li
-              == link_to 'Perfil', characters_path, class: 'dropdown-item text-white'
+              == link_to 'Cuenta', profile_user_path(current_user), class: 'dropdown-item text-primary'
+            li
+              == link_to 'Personajes', characters_path, class: 'dropdown-item text-primary'
             li
               hr.dropdown-divider/
             li
-              == link_to 'Cerrar sesión', destroy_user_session_path(current_user), method: :delete, class: 'dropdown-itemtext-white'
+              == link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item text-primary'
     - else
       ul.nav.justify-content-end
         li.nav-item.mx-1

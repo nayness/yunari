@@ -1,0 +1,9 @@
+
+  h3.text-primary
+    i.fas.fa-user
+  p.lead.text-primary== current_user.name || current_user.email
+  .list-group
+    == link_to 'Crear personaje', new_character_path, class: "list-group-item list-group-item-action text-primary"
+    == link_to 'Personajes', characters_path, class: "list-group-item list-group-item-action text-primary"
+    == link_to 'Cambiar contraseña', edit_user_registration_path, class: "list-group-item list-group-item-action text-primary"
+    == link_to 'Borrar cuenta', cancel_user_registration_path, class: "list-group-item list-group-item-action text-primary"

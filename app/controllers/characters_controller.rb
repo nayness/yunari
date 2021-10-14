@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
   before_action :set_slug, only: [:public_info, :search_slug]
 
@@ -31,6 +31,7 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    @remaining_points = @character.remaining_points
   end
 
   def create
