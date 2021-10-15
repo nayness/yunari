@@ -2,6 +2,7 @@ $( document ).on('turbolinks:load', function() {
   validateCreateKind();
   loadSharedDeleteModal("race");
   loadSharedDeleteModal("kind");
+  loadSharedDeleteModal("account");
 });
 
 function validateCreateKind(){

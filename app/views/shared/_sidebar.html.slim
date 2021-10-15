@@ -9,6 +9,6 @@ p.lead.text-primary== current_user.name || current_user.email
     == link_to 'Razas', races_path, class: "list-group-item list-group-item-action text-primary"
     == link_to 'Tipos', kinds_path, class: "list-group-item list-group-item-action text-primary"
   == link_to 'Cambiar contraseña', edit_user_registration_path, class: "list-group-item list-group-item-action text-primary"
-  == link_to 'Borrar cuenta', cancel_user_registration_path, class: "list-group-item list-group-item-action text-primary"
-
-== render 'modal'
+  == button_tag 'Borrar cuenta', class: "list-group-item list-group-item-action text-primary delete_account", data: { linked: "deleteAccount", url: cancel_user_registration_path }
+.modal#deleteAccount tabindex="-1"
+  == render 'shared/modal', title: 'Eliminar Cuenta', message: '¿Estás segur@ que deseas continuar?', url: cancel_user_registration_path

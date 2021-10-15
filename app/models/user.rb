@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :characters
+  has_many :characters, dependent: :destroy
 
   after_create :assign_default_role
 
