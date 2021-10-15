@@ -41,9 +41,10 @@ class RacesController < ApplicationController
   def destroy
     if @race.destroy
       flash[:success] = "Eliminado exitosamente"
+      redirect_to races_path
     else
       flash[:danger] = "Ocurrió un error al eliminar este recurso"
-      redirect_to race_path(@race)
+      redirect_to races_path(@race)
     end
   end
 
