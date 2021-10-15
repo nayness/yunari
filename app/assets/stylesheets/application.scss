@@ -13,4 +13,15 @@
  *= require_tree .
  *= require_self
  */
+$primary: #9d4edd;
+$success:       #17c3b2;
+$info:          #4cc9f0;
+$warning:       #ff9e00;
+$danger:        #e5383b;
 @import "bootstrap/scss/bootstrap";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims'

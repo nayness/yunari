@@ -1,2 +1,34 @@
-h1 Characters#index
-p Find me in app/views/characters/index.html.slim
+.container
+  .row.mt-3
+    .col-md-12.col-xs-12.mb-3
+      == link_to 'Crear personaje', new_character_path, class: 'btn btn-outline-primary btn-lg '
+  .row.mt-3
+    - @characters.each do |character|
+      .col-md-3.col-sm-6.col-xs-12.mb-3
+        .shadow.p-3.mb-3.bg-body.rounded.h-100
+          .row
+            .col-md-10.col-xs-8
+              h3== character.name.capitalize
+            .col-md-2.col-xs-2
+              - if user_signed_in? && current_user.owns?(character.user_id)
+                == link_to raw('<i class="fas fa-edit"></i>'), edit_character_path(character), class: "btn btn-primary float-end"
+              end
+          .row
+            .col-md-12.col-xs-12
+              - if character.privacy?
+                i.fas.fa-lock.text-primary.mx-1
+                span.text-primary Privado
+              - else
+                i.fas.fa-globe-americas.text-primary.mx-1
+                span.text-primary Público
+              end
+            .col-md-12.col-xs-12
+              == image_tag url_for(character.image), class: "card-img-top rounded mt-3"
+          .row.mb-3.mt-3
+            .col-md-12.col-xs-12
+              .bg-light.p-3.border.rounded
+                == button_tag 'Copiar', class: "btn btn-outline-primary btn-sm float-end copy_link", data: { bs_toggle: "tooltip",  bs_placement: "top", link: character.slug }, title: "Copiar al portapapeles"
+                == link_to personajes_path(character.slug), personajes_path(character.slug)
+                .d-none
+                  == text_field_tag :link, "localhost:3000#{personajes_path(character.slug)}", id: character.slug
+    end

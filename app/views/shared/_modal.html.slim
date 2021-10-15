@@ -1,0 +1,11 @@
+
+.modal-dialog
+  .modal-content
+    .modal-header
+      h5.modal-title.text-primary==title
+      button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+    .modal-body
+      p== message
+    .modal-footer
+      button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Cancelar
+      == link_to 'Aceptar', races_path, method: :delete, class: "btn btn-primary delete-link"

@@ -1,0 +1,12 @@
+.modal#delete_character_modal tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title.text-primary Eliminar Personaje
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      .modal-body
+        p Esta acción eliminará toda la información del personaje.
+        p ¿Estás segur@ que deseas continuar?
+      .modal-footer
+        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Cancelar
+        == link_to 'Aceptar', character_path(@character), method: :delete, class: "btn btn-primary"

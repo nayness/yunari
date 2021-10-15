@@ -1,0 +1,19 @@
+.row
+  .col-md-2.col-xs-4.mt-3
+    == link_to 'Volver',  profile_user_path(current_user), class: "btn btn-success text-white mt-3"
+  .col-md-4.offset-md-1.col-xs-8.mt-3
+    table.table
+      thead
+       tr.text-primary
+        th.lead Nombre
+        th.lead Acciones
+      tbody
+        - @races.each do |race|
+          tr
+            td== race.name
+            td
+              == link_to raw('<i class="fas fa-edit"></i>'), edit_race_path(race), class: "btn btn-success btn-sm text-white mx-3"
+              == button_tag raw('<i class="fas fa-trash"></i>'), class: "btn btn-danger btn-sm text-white delete_race", data: { url: "#{race_path(race)}", linked: "deleteRace" }
+.modal#deleteRace tabindex="-1"
+  == render 'shared/modal', title: 'Eliminar Raza', message: '¿Estás segur@ que deseas realizar esta acción?'
+              / ====== <3 <3 <3 ======

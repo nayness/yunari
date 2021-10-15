@@ -1,0 +1,14 @@
+
+h3.text-primary
+  i.fas.fa-user
+p.lead.text-primary== current_user.name || current_user.email
+.list-group
+  == link_to 'Cuenta', profile_user_path(current_user), class: "list-group-item list-group-item-action text-primary"
+  == link_to 'Personajes', characters_path, class: "list-group-item list-group-item-action text-primary"
+  - if current_user.has_role? :admin
+    == link_to 'Razas', races_path, class: "list-group-item list-group-item-action text-primary"
+    == link_to 'Tipos', kinds_path, class: "list-group-item list-group-item-action text-primary"
+  == link_to 'Cambiar contraseña', edit_user_registration_path, class: "list-group-item list-group-item-action text-primary"
+  == link_to 'Borrar cuenta', cancel_user_registration_path, class: "list-group-item list-group-item-action text-primary"
+
+== render 'modal'

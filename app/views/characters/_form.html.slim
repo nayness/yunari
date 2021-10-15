@@ -1,0 +1,63 @@
+== form_for @character, method: method do |f|
+  .row
+    .col-md-4.col-xs-11.offset-md-1.mt-3.text-primary
+      - if user_signed_in?
+        .mb-3
+          .form-check.form-switch
+            == f.check_box :privacy, role: "switch", type: "checkbox", class: "form-check-input"
+            == f.label :privacy, 'Privado', class: "form-check-label"
+      .mb-3
+        == f.label :image, 'Imagen', class: "form-label"
+        - if @character.image.present?
+          == image_tag url_for(@character.image), class: "img-thumbnail rounded w-25 d-block mb-3"
+        end
+        == f.file_field :image, accept: 'image/png, image/gif, image/jpeg', class: "form-control", type: "file"
+
+      - if @character.new_record?
+        .mb-3
+          == f.label :name, 'Nombre', class: "form-label"
+          == f.text_field :name, class: "form-control", required: true, value: @character.name
+      end
+      .mb-3
+        == f.label :special_skill, 'Habilidad Especial', class: "form-label"
+        == f.select :special_skill, options_for_select(['Resistencia al fuego', 'Resistencia al frio', 'Resistencia al veneno', 'Resistencia a la oscuridad', 'Movimiento acelerado', 'Crecimiento acelerado', 'Invocación de familiar']), {}, class: "form-select"
+      .mb-3
+        == f.label :race_id, 'Raza', class: "form-label"
+        == f.collection_select(:race_id, Race.all, :id, :name, {}, class: "form-select")
+      .mb-3
+        == f.label :race_id, 'Tipo', class: "form-label"
+        == f.collection_select(:kind_id, Kind.all, :id, :name, {}, class: "form-select")
+      .mb-3
+        == f.label :history, 'Historia', class: "form-label"
+        == f.text_area :history, class: "form-control"
+
+    .col-md-4.col-xs-11.offset-md-1.mt-5
+      .mb-4.text-center
+        p.lead
+          | Puntos por asignar
+          == number_field_tag :remaining_points, @remaining_points,  class: "total text-#{@remaining_points >= 0 ? 'success' : 'danger'}", readonly: true
+      .mb-3
+        == f.label :power, 'Poder', class: "form-label"
+        == number_field_tag :power_indicator, @character.power,  class: "float-end indicator text-secondary"
+        == f.number_field :power, class: "form-range", type: "range", min: 100, max: 1000, value: @character.power
+      .mb-3
+        == f.label :attack, 'Ataque', class: "form-label"
+        == number_field_tag :attack_indicator, @character.attack,  class: "float-end indicator text-secondary"
+        == f.number_field :attack, class: "form-range", type: "range", min: 100, max: 1000, value: @character.attack
+      .mb-3
+        == f.label :strenght, 'Fuerza', class: "form-label"
+        == number_field_tag :strenght_indicator, @character.strenght,  class: "float-end indicator text-secondary"
+        == f.number_field :strenght, class: "form-range", type: "range", min: 100, max: 1000, value: @character.strenght
+      .mb-3
+        == f.label :charisma, 'Carisma', class: "form-label"
+        == number_field_tag :charisma_indicator, @character.charisma,  class: "float-end indicator text-secondary"
+        == f.number_field :charisma, class: "form-range", type: "range", min: 100, max: 1000, value: @character.charisma
+      .mb-3
+        == f.label :spirit, 'Espíritu', class: "form-label"
+        == number_field_tag :spirit_indicator, @character.spirit,  class: "float-end indicator text-secondary"
+        == f.number_field :spirit, class: "form-range", type: "range", min: 100, max: 1000, value: @character.spirit
+  .row
+    .col-md-4.col-xs-11.offset-md-1
+      .mb-3
+        == f.submit 'Guardar', class: "btn btn-primary w-100"
+end
