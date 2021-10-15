@@ -42,7 +42,7 @@ function loadSharedDeleteModal(name){
   $(".delete_" + name).on('click', function(){
     var mo = document.getElementById(this.dataset.linked);
     var modal = new bootstrap.Modal(mo);
-    $(".delete-link").href = this.dataset.url;
+    $(".delete-link").attr("href", this.dataset.url);
     modal.show();
   });
 }

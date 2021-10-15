@@ -40,9 +40,10 @@ class KindsController < ApplicationController
 
   def destroy
     if @kind.destroy
-      flash[:success] = "Eliminado exitosamente"
+      flash[:success] = 'Eliminado exitosamente'
+      redirect_to kinds_path
     else
-      flash[:danger] = "Ocurrió un error al eliminar este recurso"
+      flash[:danger] = 'Ocurrió un error al eliminar este recurso'
       redirect_to kind_path(@kind)
     end
   end
