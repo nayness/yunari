@@ -1,4 +1,6 @@
 .row
-  .col-md-10.col-xs-11.offset-md-1.mt-3
+  .col-md-1
+    == link_to 'Volver', characters_path, class: "btn btn-success text-white w-100 mt-3"
+  .col-md-10.col-xs-11.mt-3
     h4 Crear personaje
 == render 'form', method: :post

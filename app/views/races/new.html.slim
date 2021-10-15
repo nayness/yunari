@@ -1,2 +1,5 @@
-h1 Races#new
-p Find me in app/views/races/new.html.slim
+.row
+  .col-md-2.col-xs-4.mt-3
+    == link_to 'Volver', races_path, class: "btn btn-success text-white mt-3 w-100"
+  .col-md-4.offset-md-1.col-xs-8
+    == render 'form'

@@ -1,0 +1,12 @@
+.modal#delete_account tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title.text-primary Eliminar Cuenta
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      .modal-body
+        p Esta acción eliminará tu cuenta y ya no podrás acceder a ella.
+        p ¿Estás segur@ que deseas continuar?
+      .modal-footer
+        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Cancelar
+        == link_to 'Aceptar', cancel_user_registration_path, method: :delete, class: "btn btn-primary"

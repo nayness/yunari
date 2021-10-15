@@ -1,5 +1,6 @@
 $( document ).on('turbolinks:load', function() {
-  validateCharacter();
+  validateCharacter("#new_character");
+  validateCharacter(".edit_character");
   showSliderValue("power");
   showSliderValue("attack");
   showSliderValue("strenght");
@@ -30,15 +31,22 @@ function getTotal(){
   return total;
 }
 
-function validateCharacter(){
-  $("#new_character").validate({
+function validateCharacter(formId){
+  $(formId).validate({
     errorClass: 'is-invalid',
     errorElement: 'div',
     rules: {
       'remaining_points': {
         minPoints: true,
       },
-      'character[image]': "required",
+      'character[image]': {
+        required: function (){
+          if (formId.includes("edit")){
+            return false;
+          }
+          return true;
+        }
+      },
       'character[name]': {
         required: true,
         nameUniq: true

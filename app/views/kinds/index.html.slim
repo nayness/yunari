@@ -1,2 +1,19 @@
-h1 Kinds#index
-p Find me in app/views/kinds/index.html.slim
+.row
+  .col-md-2.col-xs-4.mt-3
+    == link_to 'Volver',  profile_user_path(current_user), class: "btn btn-success text-white mt-3"
+  .col-md-4.offset-md-1.col-xs-8.mt-3
+    table.table
+      thead
+       tr
+        th.text-primary.lead Nombre
+        th.text-primary.lead Acciones
+      tbody
+        - @kinds.each do |kind|
+          tr
+            td== kind.name
+            td
+              == link_to raw('<i class="fas fa-edit"></i>'), edit_kind_path(kind), class: "btn btn-success btn-sm text-white mx-3"
+              == button_tag raw('<i class="fas fa-trash"></i>'), class: "btn btn-danger btn-sm text-white delete_kind", data: { url: "#{kind_path(kind)}", linked: "deleteKind" }
+.modal#deleteKind tabindex="-1"
+  == render 'shared/modal', title: 'Eliminar Tipo', message: '¿Estás segur@ que deseas realizar esta acción?'
+              / ====== <3 <3 <3 ======

@@ -14,6 +14,7 @@ import "@fortawesome/fontawesome-free/js/all";
 import 'packs/general'
 import 'packs/characters'
 import 'packs/login'
+import 'packs/kinds'
 
 window.bootstrap = require('bootstrap');
 

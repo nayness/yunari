@@ -6,3 +6,9 @@
 .btn{
   border-radius: 50%;
 }
+.nav > li.dropdown.open > ul.dropdown-menu a:hover
+{
+  color: #fff;
+  background-color: #17c3b2;
+  border-color: #fff;
+}

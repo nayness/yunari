@@ -5,8 +5,10 @@ class Character < ApplicationRecord
 
   has_one_attached :image
 
+  scope :for_public, -> { where(privacy: false) }
+
   validates :name, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: true
+  validates :slug, uniqueness: true
   validates :token, presence: true, uniqueness: true
   validates :power, inclusion: { in: 100..1000 }
   validates :attack, inclusion: { in: 100..1000 }

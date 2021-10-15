@@ -1,0 +1,12 @@
+== form_for @race do |f|
+  .row
+    .col-md-12
+      h3.lead Editar Raza
+      hr.text-primary
+    .col-md-8
+      .mb-3
+        == f.label :name,'Nombre', class: "form-label"
+        == f.text_field :name, class: "form-control"
+      .mb-3
+        == f.submit 'Guardar', class: "btn btn-primary w-100"
+end

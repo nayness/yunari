@@ -1,10 +1,11 @@
 == form_for @character, method: method do |f|
   .row
     .col-md-4.col-xs-11.offset-md-1.mt-3.text-primary
-      .mb-3
-        .form-check.form-switch
-          == f.check_box :privacy, role: "switch", type: "checkbox", class: "form-check-input"
-          == f.label :privacy, 'Privado', class: "form-check-label"
+      - if user_signed_in?
+        .mb-3
+          .form-check.form-switch
+            == f.check_box :privacy, role: "switch", type: "checkbox", class: "form-check-input"
+            == f.label :privacy, 'Privado', class: "form-check-label"
       .mb-3
         == f.label :image, 'Imagen', class: "form-label"
         - if @character.image.present?
@@ -34,7 +35,7 @@
       .mb-4.text-center
         p.lead
           | Puntos por asignar
-          == number_field_tag :remaining_points, @remaining_points,  class: "total text-success", readonly: true   
+          == number_field_tag :remaining_points, @remaining_points,  class: "total text-#{@remaining_points >= 0 ? 'success' : 'danger'}", readonly: true
       .mb-3
         == f.label :power, 'Poder', class: "form-label"
         == number_field_tag :power_indicator, @character.power,  class: "float-end indicator text-secondary"

@@ -1,6 +1,8 @@
 .container
   .row
-    .col-md-4.offset-md-2.col-xs-12.mt-5
+    .col-md-2.col-xs-12
+      == link_to 'Volver', characters_path, class: "btn btn-success text-white mt-5"
+    .col-md-4.col-xs-12.mt-5
       .shadow.p-3.mb-5.bg-body.rounded
         .float-end
           - if @character.privacy?

@@ -1,11 +1,14 @@
 .row
   .col-md-1.col-xs-4
-    == link_to :back, 'Volver', class: "btn btn-success text-white w-100 mt-3"
+    == link_to 'Volver', characters_path, class: "btn btn-success text-white mt-3"
   .col-md-10.col-xs-8.mt-3
     .row
-      .col-md-8.offset-md-1.col-xs-8
+      .col-md-7.offset-md-1.col-xs-8
         h4 Editar personaje
-      .col-md-2.col-xs-4
-        == button_tag raw('<span><i class="fas fa-trash mx-2"></i>Eliminar</span>'), type: :button, class: "btn btn-danger text-white mt-3", id: "delete_character_btn"
+        hr.text-primary
+      .col-md-1.col-sm-2.col-xs-2
+        == link_to raw('<span><i class="fas fa-eye mx-2"></i></span>'), personajes_path(@character.slug), class: "btn btn-success text-white float-end"
+      .col-md-1.col-sm-2.col-xs-2
+        == button_tag raw('<span><i class="fas fa-trash mx-2"></i></span>'), type: :button, class: "btn btn-danger text-white float-end", id: "delete_character_btn"
       == render 'form', method: :put
 == render 'modal'
