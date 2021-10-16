@@ -15,7 +15,7 @@ class Character < ApplicationRecord
   validates :strenght, inclusion: { in: 100..1000 }
   validates :charisma, inclusion: { in: 100..1000 }
   validates :spirit, inclusion: { in: 100..1000 }
-  validates :image, attached: true
+  validates :image, attached: true, size: { less_than: 100.megabytes, message: 'Demasiado grande'}, content_type: ['image/png', 'image/jpg']
   validate :total?
 
   before_validation :generate_token
