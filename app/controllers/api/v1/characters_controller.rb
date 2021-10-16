@@ -10,7 +10,7 @@ module Api
         elsif @character.privacy?
           render json: { message: 'Forbidden' }, status: :forbidden
         else
-          render json: @character.attributes.except(:id), status: :ok
+          render json: @character, serializer: CharacterSerializer, status: :ok
         end
       end
 
@@ -18,7 +18,7 @@ module Api
         @character = Character.new(character_params)
         @character.user = current_user if current_user.present?
         if @character.save
-          render json: CharactersSerializer.new(@character), status: :created
+          render json: @character, serializer: CharacterSerializer, status: :created
         else
           render json: { errors: @character.errors }, status: :not_found
         end
