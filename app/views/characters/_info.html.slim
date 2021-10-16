@@ -13,7 +13,7 @@
             span.text-primary Público
           end
         h3== @character.name.capitalize
-        == image_tag url_for(@character.image), class: "card-img-top rounded"
+        == image_tag @character.image.variant(resize_to_fill: [500, 500]), class: "card-img-top rounded"
         .row.mb-3.mt-3
           .col-sm-12
             .bg-light.p-3.border.rounded

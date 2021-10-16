@@ -33,7 +33,7 @@ gem 'active_storage_validations'
 gem 'rolify'
 gem 'cancancan'
 gem 'dotenv-rails'
-gem 'sendgrid-ruby'
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

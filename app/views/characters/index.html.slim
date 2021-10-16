@@ -23,7 +23,7 @@
                 span.text-primary Público
               end
             .col-md-12.col-xs-12
-              == image_tag url_for(character.image), class: "card-img-top rounded mt-3"
+              == image_tag character.image.variant(resize_to_fill: [500, 500]), class: "card-img-top rounded mt-3"
           .row.mb-3.mt-3
             .col-md-12.col-xs-12
               .bg-light.p-3.border.rounded

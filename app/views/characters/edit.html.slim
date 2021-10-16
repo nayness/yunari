@@ -10,5 +10,5 @@
         == link_to raw('<span><i class="fas fa-eye mx-2"></i></span>'), personajes_path(@character.slug), class: "btn btn-success text-white float-end"
       .col-md-1.col-sm-2.col-xs-2
         == button_tag raw('<span><i class="fas fa-trash mx-2"></i></span>'), type: :button, class: "btn btn-danger text-white float-end", id: "delete_character_btn"
-      == render 'form', method: :put
+    == render 'form', method: :put
 == render 'modal'
