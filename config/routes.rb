@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   resources :users, only: [] do
     member do
       get :profile
@@ -6,8 +7,7 @@ Rails.application.routes.draw do
       put :update_account
     end
   end
-  devise_for :users
-  root 'pages#home'
+  devise_for :users, path: 'users', controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   get 'pages/home'
   get 'personajes/:slug', to: 'characters#public_info', as: 'personajes'
   resources :characters do
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   resources :races
   resources :kinds
+
+  devise_for :api_users, controllers: { sessions: 'api_users/sessions', registrations: 'api_users/registrations' }
 
   namespace :api do
     namespace :v1 do

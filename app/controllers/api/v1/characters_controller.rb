@@ -2,6 +2,8 @@ module Api
   module V1
     class CharactersController < ApplicationController
       before_action :set_slug, only: [:show]
+      before_action :authenticate_api_user!, only: [:create]
+      skip_before_action :verify_authenticity_token
 
       def show
         @character = Character.find_by(slug: @slug)
