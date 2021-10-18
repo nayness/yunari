@@ -88,6 +88,8 @@ Example payload
 
 Use bearer in headers response to create a character
 
+![Postman](https://64.media.tumblr.com/abe5b7bc1f6b368a63cb7400f98ead71/606afcc712cb52df-2b/s1280x1920/de7370933cb05c28e5a7312982ab2b152d29d4c4.png)
+
 #### Create character
 
 `post /api/v1/personajes`
