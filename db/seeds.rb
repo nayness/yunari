@@ -5,11 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# 10.times do
-#   Race.create(name: Faker::Games::WorldOfWarcraft.race)
-# end
-# 10.times do
-#   Kind.create(name: Faker::Games::WorldOfWarcraft.class_name)
-# end
-Role.create(name: :standard)
-Role.create(name: :admin)
+20.times do
+  race = Race.new(name: Faker::Games::WorldOfWarcraft.race)
+  race.save if race.valid?
+end
+20.times do
+  kind = Kind.new(name: Faker::Games::WorldOfWarcraft.class_name)
+  kind.save if kind.valid?
+end
+Role.find_or_create_by(name: :standard)
+Role.find_or_create_by(name: :admin)
