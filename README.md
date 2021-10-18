@@ -1,10 +1,8 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Welcome Stranger
+Yunari is an app to create your favorites characters and share them with your friends!
 
-Things you may want to cover:
-
+It's baked with
 * Ruby version
   2.7.4
 
@@ -12,23 +10,92 @@ Things you may want to cover:
   6.1.4
 
 * System dependencies
+  
   Node 16.3.0
 
 * Configuration
+
+  To run Yunari properly you'll need to 
+
   `bundle install`
+ 
   `yarn install`
 
 
-* Database creation
+* Create DB
+
+  In config there's an database.yml.example for reference
+  You'll need to have postgresql or you can switch to sqlite an use [this](https://gist.github.com/danopia/940155) file as reference
+
   `rails db:create`
 
-* Database initialization
+* Next run migrations
+
   `rails db:migrate`
+
+  And seed databse with default values
+ 
   `rails db:seed`
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Endpoints
 
-* Deployment instructions
+### Show character info (public)
 
-* ...
+`/api/v1/personajes/:slug`
+
+### Create character
+
+First, you must create an api user
+
+#### Create api user
+
+`/api_users/sign_up`
+
+Example payload
+
+    {
+      "api_user": {
+          "email": "lala@test.com",
+          "password": "thiisneverthat",
+          "password_confirmation: "thisisneverthat"
+      }
+    }
+
+#### Login to get jwt token
+
+`/api_users/sign_in`
+
+Example payload
+
+    {
+      "api_user": {
+          "email": "lala@test.com",
+          "password": "thiisneverthat"
+      }
+    }
+
+Use bearer in headers response to create a character
+
+#### Create character
+
+`/api/v1/personajes`
+
+Example payload
+
+    {
+        "character": {
+            "name": "Annie",
+            "power": 100,
+            "attack": 1000,
+            "charisma": 100,
+            "strenght": 100,
+            "spirit": 100,
+            "race_id": 1,
+            "kind_id": 1
+
+        }
+    }
+
+
+
+
