@@ -7,7 +7,7 @@ class Character < ApplicationRecord
 
   scope :for_public, -> { where(privacy: false) }
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :slug, uniqueness: true
   validates :token, presence: true, uniqueness: true
   validates :power, inclusion: { in: 100..1000 }
@@ -15,7 +15,7 @@ class Character < ApplicationRecord
   validates :strenght, inclusion: { in: 100..1000 }
   validates :charisma, inclusion: { in: 100..1000 }
   validates :spirit, inclusion: { in: 100..1000 }
-  validates :image, size: { less_than: 100.megabytes, message: 'Demasiado grande'}, content_type: ['image/png', 'image/jpg']
+  validates :image, size: { less_than: 100.megabytes, message: 'Demasiado grande' }, content_type: ['image/png', 'image/jpg']
   validate :total?
 
   before_validation :generate_token
@@ -32,6 +32,8 @@ class Character < ApplicationRecord
   end
 
   def standard_name
+    return unless name.present?
+
     name.downcase.strip.gsub(/[^0-9A-Za-z\s]/, '')
   end
 

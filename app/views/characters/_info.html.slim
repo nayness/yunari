@@ -13,7 +13,10 @@
             span.text-primary Público
           end
         h3== @character.name.capitalize
-        == image_tag @character.image.variant(resize_to_fill: [500, 500]), class: "card-img-top rounded"
+        - if @character.image.attached?
+          == image_tag @character.image.variant(resize_to_fill: [500, 500]), class: "card-img-top rounded mt-3"
+        - else
+          == image_tag "user.png", class: "card-img-top rounded mt-3"
         .row.mb-3.mt-3
           .col-sm-12
             .bg-light.p-3.border.rounded
