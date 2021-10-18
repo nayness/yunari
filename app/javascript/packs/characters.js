@@ -16,8 +16,7 @@ $( document ).on('turbolinks:load', function() {
 });
 
 jQuery.validator.addMethod("minPoints", function(value, element) {
-  var total = searchName().then(response => response.total);
-  return this.optional(element) || (total === 0);
+  return this.optional(element) || (getTotal() === 0);
 }, "Tienes que asignar exactamente 2000 pts");
 
 jQuery.validator.addMethod("nameUniq", function(value, element) {
@@ -130,10 +129,15 @@ function setPoints(name){
 
 function searchName(){
   var name = $("#character_name").val();
-  return $.ajax({
+  var total = 0;
+  $.ajax({
     url: "/characters/search_slug",
-    data: { character: { slug: name } }
+    data: { character: { slug: name } },
+    success: function(result){
+      total = result.total;
+    }
   });
+  return total;
 }
 
 function setTotal(){
