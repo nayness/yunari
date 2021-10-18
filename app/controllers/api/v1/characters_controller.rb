@@ -1,9 +1,9 @@
 module Api
   module V1
     class CharactersController < ApplicationController
+      skip_before_action :verify_authenticity_token
       before_action :set_slug, only: [:show]
       before_action :authenticate_api_user!, only: [:create]
-      skip_before_action :verify_authenticity_token
 
       def show
         @character = Character.find_by(slug: @slug)
@@ -35,7 +35,7 @@ module Api
       end
 
       def character_params
-        params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :token, :image, :race_id, :kind_id, :slug, :history)
+        params.require(:character).permit(:name, :power, :strenght, :attack, :charisma, :spirit, :special_skill, :race_id, :kind_id, :history)
       end
     end
   end

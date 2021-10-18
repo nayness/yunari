@@ -12,7 +12,7 @@ class CharacterSerializer < ActiveModel::Serializer
 
   def public_url
     if Rails.env.development?
-      "localhost:3000/#{personajes_path(object.slug)}"
+      "localhost:3000#{personajes_path(object.slug)}"
     else
       "#{ENV['HOST']}/#{personajes_path(object.slug)}"
     end
