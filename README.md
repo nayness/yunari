@@ -45,7 +45,19 @@ It's baked with
 
 ### Create character
 
-First, you must create an api user
+First, you must create an `.env` file in proyect's root directory 
+
+`touch .env`
+
+Create a rails secret
+
+`rails secret`
+
+And copy paste it into `.env` file as
+
+`JWT_TOKEN = your_rails_secret`
+
+Then you'll need to create an api user
 
 #### Create api user
 
