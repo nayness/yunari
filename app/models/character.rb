@@ -7,8 +7,7 @@ class Character < ApplicationRecord
 
   scope :for_public, -> { where(privacy: false) }
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :slug, uniqueness: true
   validates :token, presence: true, uniqueness: true
   validates :power, inclusion: { in: 100..1000 }
