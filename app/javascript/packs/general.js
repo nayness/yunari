@@ -2,7 +2,6 @@ $( document ).on('turbolinks:load', function() {
   enableTooltips();
   enableToast();
   enableDropdowns();
-  enableCollapsable();
 });
 
 
