@@ -24,7 +24,7 @@ It's baked with
 
 * Create DB
 
-  In config there's an database.yml.example for reference
+  In config there's an `database.yml.example` for reference
   You'll need to have postgresql or you can switch to sqlite an use [this](https://gist.github.com/danopia/940155) file as reference
 
   `rails db:create`
@@ -61,7 +61,7 @@ Then you'll need to create an api user
 
 #### Create api user
 
-`/api_users/sign_up`
+`post /api_users/sign_up`
 
 Example payload
 
@@ -75,7 +75,7 @@ Example payload
 
 #### Login to get jwt token
 
-`/api_users/sign_in`
+`post /api_users/sign_in`
 
 Example payload
 
@@ -90,7 +90,7 @@ Use bearer in headers response to create a character
 
 #### Create character
 
-`/api/v1/personajes`
+`post /api/v1/personajes`
 
 Example payload
 
@@ -109,6 +109,19 @@ Example payload
         }
     }
 
+
+#### Extra: close session
+
+`delete /api_users/sign_out`
+
+Example payload
+
+    {
+      "api_user": {
+          "email": "lala@test.com",
+          "password": "thiisneverthat"
+      }
+    }
 
 
 
