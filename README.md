@@ -68,7 +68,13 @@ And copy paste it into `.env` file as
 
 `JWT_TOKEN = your_rails_secret`
 
-Then you'll need to create an api user
+##### Troubleshooting
+
+If isn't loading correctly ENVs, please try stoping spring and restarting your rails server
+
+`spring stop`
+
+Next you'll need to create an api user
 
 #### Create api user
 
