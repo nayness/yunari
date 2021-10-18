@@ -16,7 +16,7 @@ $( document ).on('turbolinks:load', function() {
 });
 
 jQuery.validator.addMethod("minPoints", function(value, element) {
-  return this.optional(element) || (getTotal() === 0);
+  return this.optional(element) || ( getRemaining() === 0);
 }, "Tienes que asignar exactamente 2000 pts");
 
 jQuery.validator.addMethod("nameUniq", function(value, element) {
@@ -72,9 +72,12 @@ function validateCharacter(formId){
       'remaining_points': {
         minPoints: function(){
           var remaining = getRemaining();
-          var message = "Aún te quedan puntos por asignar";
+          var message = "";
           if (remaining < 0 ){
             message = "No puedes asignar más de 2000 puntos";
+          }
+          else if (remaining > 0){
+            message = "Aún te quedan puntos por asignar"
           }
           return message;
         }
