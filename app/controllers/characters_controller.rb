@@ -43,7 +43,7 @@ class CharactersController < ApplicationController
     else
       @remaining_points = @character.remaining_points
       flash[:danger] = 'Ups hubo un problema creando este personaje'
-      puts @character.errors.full_messages
+      flash[:danger] = @character.errors.full_messages&.first if @character.errors.present?
       render :new
     end
   end
@@ -56,7 +56,7 @@ class CharactersController < ApplicationController
     else
       @remaining_points = @character.remaining_points
       flash[:danger] = 'Ups hubo un problema editando este personaje'
-      puts @character.errors.full_messages
+      flash[:danger] = @character.errors.full_messages&.first if @character.errors.present?
       render :edit
     end
   end
