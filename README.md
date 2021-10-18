@@ -61,7 +61,7 @@ Example payload
       }
     }
 
-#### Login to get jwt token
+#### Login to get jwt token
 
 `/api_users/sign_in`
 
@@ -85,11 +85,12 @@ Example payload
     {
         "character": {
             "name": "Annie",
-            "power": 100,
+            "power": 300,
             "attack": 1000,
-            "charisma": 100,
+            "charisma": 1000,
             "strenght": 100,
             "spirit": 100,
+            "history": "Fire Girl",
             "race_id": 1,
             "kind_id": 1
 
