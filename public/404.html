@@ -4,15 +4,22 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
+  <style>
+    @media only screen and (max-width: 600px) {
+      .mobile{
+        width: 15%;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
   <div style="display: flex; text-align: center;">
-    <div style="width: 50%;">
+    <div style="width: 50%;" class="mobile">
       <img src="/assets/notfound.jpg" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
-    <div style="width: 50%;">
+    <div style="width: 50%;" class="mobile">
       <p style="color: #9d4edd; font-size: 10em; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin-bottom: 10px;">404</p>
       <p style="color: #9d4edd;font-size: 1.3em; font-family:
       'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">La página que estás buscando no existe :C</p>
