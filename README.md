@@ -37,6 +37,17 @@ It's baked with
  
   `rails db:seed`
 
+ ### Roles
+ 
+ Name| Privileges
+------------ | ----------
+standard| can edit characters and personal info
+admin | can also edit character races and kinds
+
+To get access to all features please create an admin user (by default new users are created with standard privileges)
+
+`User.find(1).add_role(:admin)`
+
 ## Endpoints
 
 ### Show character info (public)
